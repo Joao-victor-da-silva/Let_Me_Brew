@@ -7,13 +7,14 @@
 size = Vector2(12, 9)
 
 [node name="Caixa" type="RigidBody2D"]
-position = Vector2(5, 0)
+position = Vector2(6, 1)
 collision_layer = 16
 collision_mask = 9
 mass = 1.365
 gravity_scale = 0.63
 freeze_mode = 1
 script = ExtResource("1_joywy")
+id_magia = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
