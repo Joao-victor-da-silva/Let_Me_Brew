@@ -14,6 +14,7 @@ var vida_atual : float = 200.0
 var timer_flash : float = 0.0
 
 func _ready():
+	sprite.material.set_shader_parameter("flash_amount", 0.0)
 	Globals.inimigo_atacou.connect(tomar_dano)
 
 func _process(delta):

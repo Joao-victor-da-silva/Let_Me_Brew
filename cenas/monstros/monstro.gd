@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal morreu
+
 const gravity = 300.0
 
 @export var speed = 40.0
