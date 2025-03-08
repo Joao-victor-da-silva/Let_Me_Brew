@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const gravity = 300.0
 const speed = 40.0
-const dano = 5
+const dano = 20
 
 @onready var sprite = $Sprite
 @onready var timer_ataque = $TimerAtaque
