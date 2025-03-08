@@ -1,11 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=21 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
-[ext_resource type="Script" uid="uid://h3e3scwyulh2" path="res://cenas/mago.gd" id="1_h3r2y"]
+[ext_resource type="Script" uid="uid://h3e3scwyulh2" path="res://cenas/mago/mago.gd" id="1_h3r2y"]
 [ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
 [ext_resource type="Shader" uid="uid://cnusdvyaps2wj" path="res://assets/shaders/flash.gdshader" id="4_x4bry"]
+[ext_resource type="Script" uid="uid://2uo58vuuaefi" path="res://cenas/mago/spells.gd" id="6_ci51r"]
 [ext_resource type="Texture2D" uid="uid://yuxc0ssru5oa" path="res://assets/sprites/health_bar.png" id="6_jvh14"]
+[ext_resource type="Script" uid="uid://bdeayxro2fr6c" path="res://cenas/mago/fogo.gd" id="7_247np"]
+[ext_resource type="Script" uid="uid://bup6o3al8kok2" path="res://cenas/mago/gelo.gd" id="8_lcyhj"]
+[ext_resource type="Script" uid="uid://c052h0kp62qop" path="res://cenas/mago/telecinese.gd" id="9_e1l5y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3r2y"]
 shader = ExtResource("1_0b7qp")
@@ -67,6 +71,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1l5y"]
+radius = 32.0
+
 [node name="Mago" type="Node2D" groups=["mago"]]
 script = ExtResource("1_h3r2y")
 
@@ -87,6 +94,27 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.981142
 metadata/_edit_lock_ = true
+
+[node name="Spells" type="Node2D" parent="."]
+script = ExtResource("6_ci51r")
+metadata/_edit_lock_ = true
+
+[node name="Fogo" type="Node2D" parent="Spells"]
+script = ExtResource("7_247np")
+
+[node name="TriggerFogo" type="Area2D" parent="Spells/Fogo" groups=["fogo"]]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Fogo/TriggerFogo"]
+shape = SubResource("CircleShape2D_e1l5y")
+debug_color = Color(1, 0.00289285, 0.0726734, 0.42)
+
+[node name="Gelo" type="Node2D" parent="Spells"]
+script = ExtResource("8_lcyhj")
+
+[node name="Telecinese" type="Node2D" parent="Spells"]
+script = ExtResource("9_e1l5y")
 
 [node name="BarraVida" type="TextureProgressBar" parent="."]
 offset_left = -14.0

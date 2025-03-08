@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
-[ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago.tscn" id="1_k46e6"]
+[ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago/mago.tscn" id="1_k46e6"]
 [ext_resource type="PackedScene" uid="uid://bymer1w1owwpa" path="res://cenas/castelo.tscn" id="2_32vai"]
 [ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
 [ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
