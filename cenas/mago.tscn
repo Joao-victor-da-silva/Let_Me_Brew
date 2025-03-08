@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=13 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
+[ext_resource type="Script" uid="uid://h3e3scwyulh2" path="res://cenas/mago.gd" id="1_h3r2y"]
 [ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3r2y"]
@@ -59,7 +60,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Mago" type="Node2D"]
+[node name="Mago" type="Node2D" groups=["mago"]]
+script = ExtResource("1_h3r2y")
 
 [node name="Escudo" type="Sprite2D" parent="."]
 z_index = -1
@@ -67,6 +69,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_h3r2y")
 scale = Vector2(64, 64)
 texture = ExtResource("1_axpp8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -75,3 +78,4 @@ sprite_frames = SubResource("SpriteFrames_q64jv")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.981142
+metadata/_edit_lock_ = true
