@@ -101,6 +101,7 @@ metadata/_edit_lock_ = true
 
 [node name="Fogo" type="Node2D" parent="Spells"]
 script = ExtResource("7_247np")
+cooldown = 1.0
 
 [node name="TriggerFogo" type="Area2D" parent="Spells/Fogo" groups=["fogo"]]
 collision_layer = 2

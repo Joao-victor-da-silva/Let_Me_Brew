@@ -34,7 +34,9 @@ func _process(delta):
 				spawn_monstro(i)
 	
 	if monstros_vivos <= 0:
-		print("proxima wave")
+		proxima_wave()
+		# TODO delay pequeno e texto na tela de "Wave 2"
+		iniciar_wave()
 
 func spawn_monstro(tipo):
 	var novo_monstro = CENAS_MONSTROS[tipo].instantiate()
@@ -53,7 +55,7 @@ func iniciar_wave():
 		monstros_vivos = monstros[0] + monstros[1] + monstros[2] + monstros[3] + monstros[4]
 
 func proxima_wave():
-	wave_atual += 1
+	wave_atual = clamp(wave_atual + 1, 0, waves.size())
 
 func monstro_morreu():
 	monstros_vivos -= 1

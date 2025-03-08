@@ -12,6 +12,8 @@ const gravity = 300.0
 @onready var timer_ataque = $TimerAtaque
 @onready var animation_player = $AnimationPlayer
 
+@onready var vida_atual = vida_maxima
+
 func _process(delta):
 	# Animações
 	if abs(velocity.x) > 0.0:
@@ -34,3 +36,13 @@ func _physics_process(delta):
 
 func ataque():
 	Globals.inimigo_atacou.emit(dano)
+
+func tomar_dano(dano):
+	vida_atual -= dano
+	if vida_atual <= 0.0:
+		morreu.emit()
+		queue_free() # TODO animação de morte melhor
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("fogo"):
+		tomar_dano(area.get_parent().dano)

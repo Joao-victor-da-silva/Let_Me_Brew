@@ -1,5 +1,7 @@
 extends "res://cenas/mago/spell_base.gd"
 
+@export var dano : int = 30
+
 @onready var trigger_fogo = $TriggerFogo
 @onready var collision_shape = $TriggerFogo/CollisionShape2D
 
