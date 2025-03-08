@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd8s4ud7e8hkb"]
+
+[ext_resource type="Texture2D" uid="uid://dccv3kqbh6y3l" path="res://icon.svg" id="1_lbg61"]
+[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://prefabs/caixa.tscn" id="2_un3lp"]
+[ext_resource type="Script" uid="uid://b5pxre0ug5ppj" path="res://scripts/cenario/pegar.gd" id="3_un3lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1tiw"]
+size = Vector2(480, 20)
+
+[node name="Teste" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(10, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(230, 0)
+shape = SubResource("RectangleShape2D_k1tiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(229.5, 5.99027e-06)
+scale = Vector2(3.74219, 0.15625)
+texture = ExtResource("1_lbg61")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_un3lp")
+
+[node name="Caixa" parent="." instance=ExtResource("2_un3lp")]
+position = Vector2(322, 93)
+id_magia = 1
+
+[node name="Caixa2" parent="." instance=ExtResource("2_un3lp")]
+position = Vector2(110, 261)
+
+[node name="Caixa6" parent="." instance=ExtResource("2_un3lp")]
+position = Vector2(125, 260)
+
+[node name="Caixa10" parent="." instance=ExtResource("2_un3lp")]
+position = Vector2(108, 253)
+
+[node name="Caixa11" parent="." instance=ExtResource("2_un3lp")]
+position = Vector2(97, 262)

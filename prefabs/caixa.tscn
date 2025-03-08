@@ -1,20 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmj8e80jykku2"]
+[gd_scene load_steps=11 format=3 uid="uid://bmj8e80jykku2"]
 
 [ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="1_g1gtg"]
 [ext_resource type="Script" uid="uid://c3yewl7h787k" path="res://scripts/cenario/mobilia.gd" id="1_joywy"]
+[ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="3_rpdxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13557"]
 size = Vector2(12, 9)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bt0g1"]
+radius = 11.0
+
+[sub_resource type="Gradient" id="Gradient_gglfy"]
+offsets = PackedFloat32Array(0, 0.418006, 1)
+colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvmp6"]
+gradient = SubResource("Gradient_gglfy")
+
+[sub_resource type="Curve" id="Curve_d6qk3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.68896, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bvmp6"]
+curve = SubResource("Curve_d6qk3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_clr7c"]
+resource_local_to_scene = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 3
+emission_box_extents = Vector3(2, 2, 2)
+angle_min = 1.07288e-05
+angle_max = 359.0
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bvmp6")
+color_ramp = SubResource("GradientTexture1D_bvmp6")
+
 [node name="Caixa" type="RigidBody2D"]
 position = Vector2(6, 1)
 collision_layer = 16
-collision_mask = 9
+collision_mask = 25
+input_pickable = true
 mass = 1.365
 gravity_scale = 0.63
 freeze_mode = 1
 script = ExtResource("1_joywy")
-id_magia = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -26,3 +66,25 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_13557")
+
+[node name="fogo" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 24
+
+[node name="areaMagia" type="CollisionShape2D" parent="fogo"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_bt0g1")
+
+[node name="fogo" type="GPUParticles2D" parent="fogo"]
+texture_filter = 1
+position = Vector2(0, 3)
+amount = 15
+amount_ratio = 0.9943
+texture = ExtResource("3_rpdxo")
+lifetime = 0.75
+randomness = 0.25
+visibility_rect = Rect2(-100, -100, 205.625, 200)
+process_material = SubResource("ParticleProcessMaterial_clr7c")
+
+[connection signal="body_entered" from="fogo" to="." method="_on_fogo_body_entered"]
