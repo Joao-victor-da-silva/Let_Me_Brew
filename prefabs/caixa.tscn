@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmj8e80jykku2"]
+
+[ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="1_g1gtg"]
+[ext_resource type="Script" uid="uid://c3yewl7h787k" path="res://scripts/cenario/mobilia.gd" id="1_joywy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13557"]
+size = Vector2(12, 9)
+
+[node name="Caixa" type="RigidBody2D"]
+position = Vector2(6, 1)
+collision_layer = 16
+collision_mask = 9
+mass = 1.365
+gravity_scale = 0.63
+freeze_mode = 1
+script = ExtResource("1_joywy")
+id_magia = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_g1gtg")
+hframes = 7
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_13557")
