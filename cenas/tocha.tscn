@@ -123,5 +123,5 @@ position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_g24m8")
 animation = &"aceso"
 autoplay = "aceso"
-frame_progress = 0.552323
+frame_progress = 0.55393
 metadata/_edit_lock_ = true
