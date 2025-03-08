@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://bymer1w1owwpa"]
+[gd_scene load_steps=10 format=4 uid="uid://bymer1w1owwpa"]
 
 [ext_resource type="Texture2D" uid="uid://cxec8wcy1ay51" path="res://assets/tilesets/BackTile.png" id="1_6l5cx"]
 [ext_resource type="Texture2D" uid="uid://b7qpv4po6hk28" path="res://assets/tilesets/GroundTile.png" id="2_c6mrx"]
 [ext_resource type="PackedScene" uid="uid://ci0ftdfu2vasp" path="res://cenas/tocha.tscn" id="3_m5yh1"]
 [ext_resource type="Texture2D" uid="uid://b2hp0qliwavyx" path="res://assets/tilesets/Chains.png" id="4_v2hk0"]
-[ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="5_4adle"]
 [ext_resource type="Texture2D" uid="uid://trqqxx3i3kuk" path="res://assets/tilesets/Pillars.png" id="5_cqpe8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6mrx"]
@@ -412,22 +411,3 @@ texture = ExtResource("5_cqpe8")
 hframes = 5
 vframes = 3
 frame = 12
-
-[node name="Portas" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="Esquerda" type="Sprite2D" parent="Portas"]
-texture_filter = 1
-position = Vector2(26, 192)
-texture = ExtResource("5_4adle")
-hframes = 3
-frame = 2
-metadata/_edit_lock_ = true
-
-[node name="Direita" type="Sprite2D" parent="Portas"]
-texture_filter = 1
-position = Vector2(454, 192)
-texture = ExtResource("5_4adle")
-hframes = 3
-frame = 2
-metadata/_edit_lock_ = true

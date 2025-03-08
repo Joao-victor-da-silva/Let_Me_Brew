@@ -1,16 +1,27 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=13 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago.tscn" id="1_k46e6"]
 [ext_resource type="PackedScene" uid="uid://bymer1w1owwpa" path="res://cenas/castelo.tscn" id="2_32vai"]
-[ext_resource type="PackedScene" uid="uid://dg8xkso3krrth" path="res://cenas/monstros/goblin.tscn" id="3_1frua"]
-[ext_resource type="PackedScene" uid="uid://csnbeq0upxv6f" path="res://cenas/monstros/goblin_metal.tscn" id="5_dmxwg"]
+[ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
+[ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
+[ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="6_dtkcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
 size = Vector2(576, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkotw"]
 size = Vector2(48, 208)
+
+[sub_resource type="Resource" id="Resource_v6mw0"]
+script = ExtResource("5_srya6")
+goblins = 8
+goblins_metal = 4
+lobisomens = 0
+esqueletos = 0
+morcegos = 0
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
 
 [sub_resource type="Animation" id="Animation_dmxwg"]
 length = 0.001
@@ -151,17 +162,38 @@ metadata/_edit_lock_ = true
 position = Vector2(236, 208)
 metadata/_edit_lock_ = true
 
-[node name="Goblin" parent="Mundo" instance=ExtResource("3_1frua")]
-position = Vector2(379, 111)
+[node name="Spawner" type="Node2D" parent="Mundo" node_paths=PackedStringArray("inimigos")]
+script = ExtResource("4_dtkcs")
+inimigos = NodePath("../Inimigos")
+waves = Array[ExtResource("5_srya6")]([SubResource("Resource_v6mw0")])
+metadata/_edit_lock_ = true
 
-[node name="Goblin2" parent="Mundo" instance=ExtResource("3_1frua")]
-position = Vector2(119, 185)
+[node name="SpawnEsquerda" type="Node2D" parent="Mundo/Spawner"]
+position = Vector2(26, 208)
+metadata/_edit_lock_ = true
 
-[node name="GoblinMetal" parent="Mundo" instance=ExtResource("5_dmxwg")]
-position = Vector2(75, 147)
+[node name="Porta" type="Sprite2D" parent="Mundo/Spawner/SpawnEsquerda"]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("6_dtkcs")
+hframes = 3
+frame = 2
+metadata/_edit_lock_ = true
 
-[node name="GoblinMetal2" parent="Mundo" instance=ExtResource("5_dmxwg")]
-position = Vector2(316, 177)
+[node name="SpawnDireita" type="Node2D" parent="Mundo/Spawner"]
+position = Vector2(454, 208)
+metadata/_edit_lock_ = true
+
+[node name="Porta" type="Sprite2D" parent="Mundo/Spawner/SpawnDireita"]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("6_dtkcs")
+hframes = 3
+frame = 2
+metadata/_edit_lock_ = true
+
+[node name="Inimigos" type="Node2D" parent="Mundo"]
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 

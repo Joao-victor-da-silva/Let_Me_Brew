@@ -183,9 +183,11 @@ animations = [{
 }]
 
 [node name="GoblinMetal" instance=ExtResource("1_ko7e5")]
-speed = 20.0
+speed = 15.0
 vida_maxima = 40
 dano = 10
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_xtvl6")
+frame = 0
+frame_progress = 0.0
