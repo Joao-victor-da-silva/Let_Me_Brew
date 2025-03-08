@@ -1,6 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=12 format=3 uid="uid://c1c5sbup2ejfk"]
 
+[ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
+[ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
 [ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3r2y"]
+shader = ExtResource("1_0b7qp")
+shader_parameter/shield_color = Color(0, 0.596078, 0.858824, 1)
+shader_parameter/blink_speed = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgq7f"]
 atlas = ExtResource("1_sgq7f")
@@ -53,6 +60,13 @@ animations = [{
 }]
 
 [node name="Mago" type="Node2D"]
+
+[node name="Escudo" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+material = SubResource("ShaderMaterial_h3r2y")
+scale = Vector2(64, 64)
+texture = ExtResource("1_axpp8")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
