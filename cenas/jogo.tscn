@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=8 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago.tscn" id="1_k46e6"]
 [ext_resource type="PackedScene" uid="uid://bymer1w1owwpa" path="res://cenas/castelo.tscn" id="2_32vai"]
+[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://cenas/caixa.tscn" id="2_dmxwg"]
 [ext_resource type="PackedScene" uid="uid://dg8xkso3krrth" path="res://cenas/goblin.tscn" id="3_1frua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
@@ -33,6 +34,9 @@ metadata/_edit_lock_ = true
 position = Vector2(504, 104)
 shape = SubResource("RectangleShape2D_bkotw")
 metadata/_edit_lock_ = true
+
+[node name="Caixa" parent="StaticBody" instance=ExtResource("2_dmxwg")]
+position = Vector2(237, 119)
 
 [node name="Castelo" parent="." instance=ExtResource("2_32vai")]
 
