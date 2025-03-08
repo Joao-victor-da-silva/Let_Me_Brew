@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1c5sbup2ejfk"]
+
+[ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgq7f"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpp8"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b7qp"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3r2y"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4bry"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvh14"]
+atlas = ExtResource("1_sgq7f")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q64jv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgq7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axpp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3r2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4bry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvh14")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="Mago" type="Node2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_q64jv")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.981142
