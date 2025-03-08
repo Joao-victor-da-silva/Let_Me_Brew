@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 const gravity = 300.0
-const speed = 40.0
-const dano = 20
+
+@export var speed = 40.0
+@export var vida_maxima = 20
+@export var dano = 5
 
 @onready var sprite = $Sprite
 @onready var timer_ataque = $TimerAtaque

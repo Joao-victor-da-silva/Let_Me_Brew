@@ -1,15 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=11 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago.tscn" id="1_k46e6"]
 [ext_resource type="PackedScene" uid="uid://bymer1w1owwpa" path="res://cenas/castelo.tscn" id="2_32vai"]
-[ext_resource type="PackedScene" uid="uid://dg8xkso3krrth" path="res://cenas/goblin.tscn" id="3_1frua"]
+[ext_resource type="PackedScene" uid="uid://dg8xkso3krrth" path="res://cenas/monstros/goblin.tscn" id="3_1frua"]
+[ext_resource type="PackedScene" uid="uid://csnbeq0upxv6f" path="res://cenas/monstros/goblin_metal.tscn" id="5_dmxwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
 size = Vector2(576, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkotw"]
 size = Vector2(48, 208)
+
+[sub_resource type="Animation" id="Animation_dmxwg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bkotw"]
 resource_name = "game_over"
@@ -37,33 +65,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_dmxwg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dmxwg"]
@@ -152,6 +153,15 @@ metadata/_edit_lock_ = true
 
 [node name="Goblin" parent="Mundo" instance=ExtResource("3_1frua")]
 position = Vector2(379, 111)
+
+[node name="Goblin2" parent="Mundo" instance=ExtResource("3_1frua")]
+position = Vector2(119, 185)
+
+[node name="GoblinMetal" parent="Mundo" instance=ExtResource("5_dmxwg")]
+position = Vector2(75, 147)
+
+[node name="GoblinMetal2" parent="Mundo" instance=ExtResource("5_dmxwg")]
+position = Vector2(316, 177)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
