@@ -1,0 +1,127 @@
+[gd_scene load_steps=18 format=3 uid="uid://ci0ftdfu2vasp"]
+
+[ext_resource type="Texture2D" uid="uid://tuy0prwf257m" path="res://assets/tilesets/Torch_Lit.png" id="1_adts0"]
+[ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="2_nf7ks"]
+
+[sub_resource type="Gradient" id="Gradient_nf7ks"]
+offsets = PackedFloat32Array(0, 0.418006, 1)
+colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvmp6"]
+gradient = SubResource("Gradient_nf7ks")
+
+[sub_resource type="Curve" id="Curve_nf7ks"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.68896, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bvmp6"]
+curve = SubResource("Curve_nf7ks")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bvmp6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+angle_min = 1.07288e-05
+angle_max = 359.0
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bvmp6")
+color_ramp = SubResource("GradientTexture1D_bvmp6")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf7ks"]
+atlas = ExtResource("1_adts0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvmp6"]
+atlas = ExtResource("1_adts0")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se1iu"]
+atlas = ExtResource("1_adts0")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0xl4"]
+atlas = ExtResource("1_adts0")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tmj5"]
+atlas = ExtResource("1_adts0")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckl7u"]
+atlas = ExtResource("1_adts0")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1lmu"]
+atlas = ExtResource("1_adts0")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc50d"]
+atlas = ExtResource("1_adts0")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nvbk"]
+atlas = ExtResource("1_adts0")
+region = Rect2(128, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g24m8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf7ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvmp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se1iu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0xl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tmj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckl7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1lmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc50d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nvbk")
+}],
+"loop": true,
+"name": &"aceso",
+"speed": 16.0
+}]
+
+[node name="Tocha" type="Node2D"]
+
+[node name="Fumaca" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -5)
+texture = ExtResource("2_nf7ks")
+lifetime = 0.75
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_bvmp6")
+metadata/_edit_lock_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_g24m8")
+animation = &"aceso"
+autoplay = "aceso"
+frame_progress = 0.552323
+metadata/_edit_lock_ = true

@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=3 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago.tscn" id="1_k46e6"]
+[ext_resource type="PackedScene" uid="uid://bymer1w1owwpa" path="res://cenas/castelo.tscn" id="2_32vai"]
 
 [node name="Jogo" type="Node2D"]
 
+[node name="Castelo" parent="." instance=ExtResource("2_32vai")]
+
 [node name="Mago" parent="." instance=ExtResource("1_k46e6")]
-position = Vector2(235, 205)
+position = Vector2(236, 208)
