@@ -24,8 +24,32 @@ func _process(delta):
 pass
 
 func controle_magia(id_magia):
+	match id_magia:
+		0:
+			normal()
+			speed = 40.0
+		1:
+			fogo()
+		2:
+			gelo()
+			speed = 0.0
+		3: 
+			telecinese()	
 	pass
 
+func normal():
+	pass
+
+func fogo():
+	pass
+
+func gelo():
+	
+	pass
+	
+func telecinese():
+	pass
+	
 func _physics_process(delta):
 	if timer_ataque.is_stopped():
 		var distancia_player = abs(Globals.posicao_player.x - global_position.x)

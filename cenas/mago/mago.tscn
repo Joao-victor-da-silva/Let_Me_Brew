@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=34 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c5til03dxa3s8" path="res://assets/sprites/icone-gelo.png" id="3_ga11a"]
 [ext_resource type="Shader" uid="uid://fb3jifn3u25u" path="res://assets/shaders/cooldown.gdshader" id="3_uwptg"]
 [ext_resource type="Texture2D" uid="uid://dfe0c400v3kfp" path="res://assets/sprites/icone-telecinese.png" id="4_ga11a"]
-[ext_resource type="Shader" uid="uid://cnusdvyaps2wj" path="res://assets/shaders/flash.gdshader" id="4_x4bry"]
+[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="4_x4bry"]
 [ext_resource type="Script" uid="uid://2uo58vuuaefi" path="res://cenas/mago/spells.gd" id="6_ci51r"]
 [ext_resource type="Texture2D" uid="uid://yuxc0ssru5oa" path="res://assets/sprites/health_bar.png" id="6_jvh14"]
 [ext_resource type="Script" uid="uid://bdeayxro2fr6c" path="res://cenas/mago/fogo.gd" id="7_247np"]
@@ -97,6 +97,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1l5y"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lhe6"]
 
 [node name="Mago" type="Node2D" groups=["mago"]]
 script = ExtResource("1_h3r2y")
@@ -225,7 +227,6 @@ hud = NodePath("../HUD")
 metadata/_edit_lock_ = true
 
 [node name="Fogo" type="Node2D" parent="Spells"]
-visible = false
 script = ExtResource("7_247np")
 tempo_cooldown = 1.0
 metadata/_edit_lock_ = true
@@ -243,6 +244,14 @@ metadata/_edit_lock_ = true
 [node name="Gelo" type="Node2D" parent="Spells"]
 script = ExtResource("8_lcyhj")
 metadata/_edit_lock_ = true
+
+[node name="TriggerGelo" type="Area2D" parent="Spells/Gelo"]
+collision_layer = 4
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Gelo/TriggerGelo"]
+visible = false
+shape = SubResource("CircleShape2D_4lhe6")
 
 [node name="Telecinese" type="Node2D" parent="Spells"]
 script = ExtResource("9_e1l5y")
@@ -263,3 +272,4 @@ tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
 [connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Telecinese" to="Spells" method="_on_telecinese_pressed"]
+[connection signal="body_entered" from="Spells/Gelo/TriggerGelo" to="Spells/Gelo" method="_on_area_2d_body_entered"]

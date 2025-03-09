@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var id_magia = 0
+@export var id_magia = 2
 
 @onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
@@ -47,6 +47,8 @@ func gelo():
 	sprite.modulate = Color8(137,255,255,255)
 	chama.visible = false
 	set_collision_mask_value(4, true)
+	await Utils.timer(5.0)
+	controle_magia(0)
 
 func telecinese():
 	sprite.modulate = Color8(232,0,248,255)
