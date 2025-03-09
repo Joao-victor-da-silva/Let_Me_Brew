@@ -13,5 +13,8 @@ func ativar():
 func cooldown():
 	timer_cooldown = tempo_cooldown
 
+func get_cooldown():
+	return (tempo_cooldown - timer_cooldown) / tempo_cooldown
+
 func pode_ativar():
 	return timer_cooldown <= 0.0

@@ -33,14 +33,12 @@ func ativar():
 			break
 
 func agarrar(body):
-	print("agarrou")
 	held_body = body
 	held_body.linear_velocity = Vector2.ZERO
 	held_body.angular_velocity = 0.0
 	held_body.freeze = false
 
 func soltar():
-	print("soltou")
 	timer_efeito = 0.0
 	held_body.linear_velocity = Vector2.ZERO
 	held_body = null
