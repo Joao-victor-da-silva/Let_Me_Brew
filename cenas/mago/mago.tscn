@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=33 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://bup6o3al8kok2" path="res://cenas/mago/gelo.gd" id="8_lcyhj"]
 [ext_resource type="Script" uid="uid://c052h0kp62qop" path="res://cenas/mago/telecinese.gd" id="9_e1l5y"]
 [ext_resource type="Texture2D" uid="uid://b4qvqqkds70qk" path="res://assets/sprites/icone-borda.png" id="12_8ncbm"]
+[ext_resource type="Texture2D" uid="uid://be4q2j2whirev" path="res://assets/sprites/caldeirao.png" id="18_2krsa"]
+[ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="19_4lhe6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2krsa"]
 shader = ExtResource("3_uwptg")
@@ -145,16 +147,19 @@ metadata/_edit_lock_ = true
 texture_filter = 1
 position = Vector2(192, 240)
 texture = ExtResource("3_8ncbm")
+metadata/_edit_lock_ = true
 
 [node name="Borda2" type="Sprite2D" parent="HUD/Bordas"]
 texture_filter = 1
 position = Vector2(240, 240)
 texture = ExtResource("12_8ncbm")
+metadata/_edit_lock_ = true
 
 [node name="Borda3" type="Sprite2D" parent="HUD/Bordas"]
 texture_filter = 1
 position = Vector2(288, 240)
 texture = ExtResource("12_8ncbm")
+metadata/_edit_lock_ = true
 
 [node name="Escudo" type="Sprite2D" parent="."]
 z_index = -1
@@ -167,12 +172,48 @@ metadata/_edit_lock_ = true
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jvh14")
-position = Vector2(0, -10)
+position = Vector2(-10, -25)
 sprite_frames = SubResource("SpriteFrames_q64jv")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.981142
-metadata/_edit_lock_ = true
+
+[node name="WoodDecor" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-10, -7)
+texture = ExtResource("19_4lhe6")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="WoodDecor4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -7)
+texture = ExtResource("19_4lhe6")
+hframes = 7
+vframes = 2
+frame = 4
+
+[node name="WoodDecor2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-17, -15)
+texture = ExtResource("19_4lhe6")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="WoodDecor3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-21, -7)
+texture = ExtResource("19_4lhe6")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="Caldeirao" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -10)
+texture = ExtResource("18_2krsa")
 
 [node name="Spells" type="Node2D" parent="." node_paths=PackedStringArray("hud")]
 script = ExtResource("6_ci51r")
@@ -180,35 +221,40 @@ hud = NodePath("../HUD")
 metadata/_edit_lock_ = true
 
 [node name="Fogo" type="Node2D" parent="Spells"]
+visible = false
 script = ExtResource("7_247np")
 tempo_cooldown = 1.0
+metadata/_edit_lock_ = true
 
 [node name="TriggerFogo" type="Area2D" parent="Spells/Fogo" groups=["fogo"]]
 collision_layer = 2
 collision_mask = 8
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Fogo/TriggerFogo"]
 shape = SubResource("CircleShape2D_e1l5y")
 debug_color = Color(1, 0.00289285, 0.0726734, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="Gelo" type="Node2D" parent="Spells"]
 script = ExtResource("8_lcyhj")
+metadata/_edit_lock_ = true
 
 [node name="Telecinese" type="Node2D" parent="Spells"]
 script = ExtResource("9_e1l5y")
 tempo_cooldown = 3.0
+metadata/_edit_lock_ = true
 
 [node name="BarraVida" type="TextureProgressBar" parent="."]
 offset_left = -14.0
-offset_top = -31.0
+offset_top = -46.0
 offset_right = 14.0
-offset_bottom = -27.0
+offset_bottom = -42.0
 value = 100.0
 texture_under = ExtResource("6_jvh14")
 texture_progress = ExtResource("6_jvh14")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
-metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
