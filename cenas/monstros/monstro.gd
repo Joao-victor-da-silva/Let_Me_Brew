@@ -14,12 +14,14 @@ const gravity = 300.0
 
 @onready var vida_atual = vida_maxima
 
+@onready var parado = false
+
 func _process(delta):
 	# Animações
 	if abs(velocity.x) > 0.0:
 		sprite.scale.x = sign(velocity.x)
 	
-	if timer_ataque.is_stopped():
+	if timer_ataque.is_stopped() && parado == false:
 		sprite.play("andando")
 pass
 
@@ -27,12 +29,10 @@ func controle_magia(id_magia):
 	match id_magia:
 		0:
 			normal()
-			speed = 40.0
 		1:
 			fogo()
 		2:
 			gelo()
-			speed = 0.0
 		3: 
 			telecinese()	
 	pass
@@ -44,14 +44,22 @@ func fogo():
 	pass
 
 func gelo():
-	
+	parado = true
+	sprite.modulate = Color8(137,255,255,255)
+	sprite.pause()
+	set_collision_mask_value(4, true)
+	await Utils.timer(5.0)
+	set_collision_mask_value(4, false)
+	sprite.modulate = Color8(255,255,255,255)
+	sprite.play()
+	parado = false
 	pass
 	
 func telecinese():
 	pass
 	
 func _physics_process(delta):
-	if timer_ataque.is_stopped():
+	if timer_ataque.is_stopped() && parado == false:
 		var distancia_player = abs(Globals.posicao_player.x - global_position.x)
 		if distancia_player > Globals.tamanho_escudo:
 			var direcao_player = sign(Globals.posicao_player.x - global_position.x)

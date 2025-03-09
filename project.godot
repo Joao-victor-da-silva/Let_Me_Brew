@@ -52,6 +52,7 @@ right_click={
 2d_physics/layer_2="player"
 2d_physics/layer_3="objetos"
 2d_physics/layer_4="monstros"
+2d_physics/layer_8="mobiliaGelo"
 
 [rendering]
 
