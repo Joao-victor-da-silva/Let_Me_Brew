@@ -7,6 +7,8 @@ extends RigidBody2D
 @onready var area_fogo = $fogo/areaMagia
 @onready var chama = $fogo
 @onready var chamas_particulas = $fogo/chama
+var index = 0 
+signal destroida(index)
 
 func _ready() -> void:
 	controle_magia(id_magia)
@@ -35,11 +37,11 @@ func fogo():
 	area_fogo.visible = true
 	chama.visible = true
 	set_collision_mask_value(4, true)
-	#await Utils.timer(5.0)
-	#sprite.visible = false
-	#chamas_particulas.emitting = false
-	#await Utils.timer(0.5)
-	#queue_free()
+	await Utils.timer(5.0)
+	sprite.visible = false
+	chamas_particulas.emitting = false
+	await Utils.timer(0.5)
+	queue_free()
 
 func gelo():
 	sprite.modulate = Color8(137,255,255,255)
@@ -57,8 +59,10 @@ func _on_fogo_body_entered(body: Node2D) -> void:
 
 func _enter_tree():
 	Globals.mobilias.append(self)
+	index = Globals.mobilias.size() - 1
 
 func _exit_tree():
+	destroida.emit(index)
 	Globals.mobilias.remove_at(Globals.mobilias.find(self))
 
 func is_mouse_over():

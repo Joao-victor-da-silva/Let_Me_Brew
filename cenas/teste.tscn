@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd8s4ud7e8hkb"]
+[gd_scene load_steps=4 format=3 uid="uid://cd8s4ud7e8hkb"]
 
 [ext_resource type="Texture2D" uid="uid://dccv3kqbh6y3l" path="res://icon.svg" id="1_lbg61"]
-[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://prefabs/caixa.tscn" id="2_un3lp"]
-[ext_resource type="Script" uid="uid://b5pxre0ug5ppj" path="res://scripts/cenario/pegar.gd" id="3_un3lp"]
 [ext_resource type="PackedScene" uid="uid://dafsy7q7qk1pc" path="res://prefabs/spawn_mobilia.tscn" id="4_k1tiw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1tiw"]
@@ -24,10 +22,5 @@ scale = Vector2(3.74219, 0.15625)
 texture = ExtResource("1_lbg61")
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("3_un3lp")
-
-[node name="Caixa" parent="." instance=ExtResource("2_un3lp")]
-position = Vector2(239, 250)
-id_magia = 1
 
 [node name="SpawnMobilia" parent="." instance=ExtResource("4_k1tiw")]
