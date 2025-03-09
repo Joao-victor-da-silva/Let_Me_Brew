@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://n8664q6lama6"]
+
+[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://prefabs/caixa.tscn" id="1_62y0l"]
+
+[sub_resource type="Gradient" id="Gradient_gglfy"]
+offsets = PackedFloat32Array(0, 0.418006, 1)
+colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvmp6"]
+gradient = SubResource("Gradient_gglfy")
+
+[sub_resource type="Curve" id="Curve_d6qk3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.68896, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bvmp6"]
+curve = SubResource("Curve_d6qk3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_swdcl"]
+resource_local_to_scene = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 3
+emission_box_extents = Vector3(2, 2, 2)
+angle_min = 1.07288e-05
+angle_max = 359.0
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bvmp6")
+color_ramp = SubResource("GradientTexture1D_bvmp6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62y0l"]
+size = Vector2(14, 8)
+
+[node name="placa" instance=ExtResource("1_62y0l")]
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 12
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="chama" parent="fogo" index="1"]
+process_material = SubResource("ParticleProcessMaterial_swdcl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_62y0l")

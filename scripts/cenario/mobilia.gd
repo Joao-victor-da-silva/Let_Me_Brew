@@ -1,41 +1,60 @@
 extends RigidBody2D
-@export var id_magia = 0
 
-#apredendo loop
+@export var id_magia = 0
+@onready var sprite = $Sprite2D
+@onready var area_fogo = $fogo/areaMagia
+@onready var chama = $fogo
+@onready var chamas_particulas = $fogo/chama
+
 func _ready() -> void:	
-	var efeito = false
 	controle_magia(id_magia)
 	pass
 	
 func _process(delta: float) -> void:
-	$fogo/fogo.global_rotation = 0
+	chamas_particulas.global_rotation = 0
 	pass
 	
 func controle_magia(id_magia):
 	match id_magia:
 		0:
-			print("normal")
-			$Sprite2D.modulate = Color8(255,255,255,255)
-			$fogo.visible = false
-			set_collision_mask_value(8, false) 
+			normal()
 		1:
-			print("fogo")
-			$Sprite2D.modulate = Color8(255,56,25,255)
-			$fogo/areaMagia.visible = true
-			$fogo.visible = true
-			set_collision_mask_value(8, true)
+			fogo()
 		2:
-			print("gelo")
-			$Sprite2D.modulate = Color8(137,255,255,255)
-			$fogo.visible = false
-			set_collision_mask_value(8, true)
+			gelo()
 		3: 
-			print("telecinese")
-			$Sprite2D.modulate = Color8(232,0,248,255)
-			$fogo.visible = false
-			set_collision_mask_value(8, true)
+			telecinese()
 	pass 
 
+func normal():
+	sprite.modulate = Color8(255,255,255,255)
+	chama.visible = false
+	set_collision_mask_value(8, false) 
+	pass
+
+func fogo():
+	sprite.modulate = Color8(255,56,25,255)
+	area_fogo.visible = true
+	chama.visible = true
+	set_collision_mask_value(8, true)
+	#await Utils.timer(5.0)
+	#sprite.visible = false
+	#chamas_particulas.emitting = false
+	#await Utils.timer(0.5)
+	#queue_free()
+	pass
+	
+func gelo():
+	sprite.modulate = Color8(137,255,255,255)
+	chama.visible = false
+	set_collision_mask_value(8, true)
+	pass
+
+func telecinese():
+	sprite.modulate = Color8(232,0,248,255)
+	chama.visible = false
+	set_collision_mask_value(8, true)
+	pass
 
 func _on_fogo_body_entered(body: Node2D) -> void:
 	if id_magia == 1:
