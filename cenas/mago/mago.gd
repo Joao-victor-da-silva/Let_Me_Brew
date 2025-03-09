@@ -4,6 +4,7 @@ const TAMANHO_MAXIMO_ESCUDO = 70.0
 const COR_ESCUDO_NORMAL = Color("0098db")
 const COR_ESCUDO_DANIFICADO = Color("db3535")
 
+@onready var hud = $HUD
 @onready var escudo = $Escudo
 @onready var sprite = $Sprites/Sprite
 @onready var barra_vida = $BarraVida
@@ -30,6 +31,7 @@ func _process(delta):
 	if escudo_ativo:
 		tamanho_escudo = lerp(35.0, 70.0, (vida_atual - 100.0) / 100.0)
 		escudo.scale = Vector2.ONE * 64.0 * tamanho_escudo / TAMANHO_MAXIMO_ESCUDO
+		escudo.visible = true
 	else:
 		tamanho_escudo = 20.0
 		escudo.visible = false
@@ -52,7 +54,13 @@ func tomar_dano(dano):
 		escudo_ativo = false
 	
 	if vida_atual <= 0:
+		hud.visible = false
 		Globals.player_morreu.emit()
 
 func set_cor_escudo(cor: Color):
 	escudo.material.set_shader_parameter("shield_color", cor)
+
+func _on_spawner_restaurar_escudo():
+	vida_atual = 200.0
+	tamanho_escudo = TAMANHO_MAXIMO_ESCUDO
+	escudo_ativo = true

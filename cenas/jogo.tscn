@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=28 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago/mago.tscn" id="1_k46e6"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
 [ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
 [ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="6_dtkcs"]
-[ext_resource type="PackedScene" uid="uid://c6r0piwlt561k" path="res://cenas/monstros/morcego.tscn" id="7_v6mw0"]
+[ext_resource type="FontFile" uid="uid://cmt7x7fs8xdul" path="res://assets/resources/Awesome 9.ttf" id="8_c77ad"]
 [ext_resource type="PackedScene" uid="uid://dafsy7q7qk1pc" path="res://prefabs/spawn_mobilia.tscn" id="8_v6mw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
@@ -20,13 +20,140 @@ size = Vector2(89, 208)
 
 [sub_resource type="Resource" id="Resource_v6mw0"]
 script = ExtResource("5_srya6")
-goblins = 8
-goblins_metal = 4
+goblins = 6
+goblins_metal = 0
+lobisomens = 0
+esqueletos = 0
+morcegos = 0
+intervalo_spawn = 3.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_c77ad"]
+script = ExtResource("5_srya6")
+goblins = 10
+goblins_metal = 0
 lobisomens = 0
 esqueletos = 0
 morcegos = 0
 intervalo_spawn = 2.0
 metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_s5cfb"]
+script = ExtResource("5_srya6")
+goblins = 6
+goblins_metal = 4
+lobisomens = 0
+esqueletos = 0
+morcegos = 0
+intervalo_spawn = 3.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_kfigh"]
+script = ExtResource("5_srya6")
+goblins = 10
+goblins_metal = 8
+lobisomens = 0
+esqueletos = 0
+morcegos = 0
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_105i5"]
+script = ExtResource("5_srya6")
+goblins = 6
+goblins_metal = 0
+lobisomens = 0
+esqueletos = 0
+morcegos = 4
+intervalo_spawn = 3.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_8tqj5"]
+script = ExtResource("5_srya6")
+goblins = 4
+goblins_metal = 4
+lobisomens = 0
+esqueletos = 0
+morcegos = 4
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_c8qsu"]
+script = ExtResource("5_srya6")
+goblins = 8
+goblins_metal = 8
+lobisomens = 0
+esqueletos = 0
+morcegos = 8
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_lcfgm"]
+script = ExtResource("5_srya6")
+goblins = 12
+goblins_metal = 12
+lobisomens = 0
+esqueletos = 0
+morcegos = 12
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_mikth"]
+script = ExtResource("5_srya6")
+goblins = 16
+goblins_metal = 16
+lobisomens = 0
+esqueletos = 0
+morcegos = 16
+intervalo_spawn = 2.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Resource" id="Resource_8bbpn"]
+script = ExtResource("5_srya6")
+goblins = 20
+goblins_metal = 20
+lobisomens = 0
+esqueletos = 0
+morcegos = 20
+intervalo_spawn = 1.0
+metadata/_custom_type_script = "uid://c0wxbn2khqekr"
+
+[sub_resource type="Animation" id="Animation_v6mw0"]
+resource_name = "iniciar_wave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../LabelWave:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c77ad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../LabelWave:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c77ad"]
+_data = {
+&"RESET": SubResource("Animation_c77ad"),
+&"iniciar_wave": SubResource("Animation_v6mw0")
+}
 
 [sub_resource type="Animation" id="Animation_dmxwg"]
 length = 0.001
@@ -139,6 +266,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Main Menu"
 
+[node name="LabelWave" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_top = 32.0
+offset_right = 480.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("8_c77ad")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Wave 1[/wave]"
+fit_content = true
+horizontal_alignment = 1
+
 [node name="Mundo" type="Node2D" parent="."]
 process_mode = 1
 metadata/_edit_lock_ = true
@@ -165,10 +306,11 @@ shape = SubResource("RectangleShape2D_bkotw")
 position = Vector2(236, 208)
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node2D" parent="Mundo" node_paths=PackedStringArray("inimigos")]
+[node name="Spawner" type="Node2D" parent="Mundo" node_paths=PackedStringArray("label_wave", "inimigos")]
 script = ExtResource("4_dtkcs")
+label_wave = NodePath("../../LabelWave")
 inimigos = NodePath("../Inimigos")
-waves = Array[ExtResource("5_srya6")]([SubResource("Resource_v6mw0")])
+waves = Array[ExtResource("5_srya6")]([SubResource("Resource_v6mw0"), SubResource("Resource_c77ad"), SubResource("Resource_s5cfb"), SubResource("Resource_kfigh"), SubResource("Resource_105i5"), SubResource("Resource_8tqj5"), SubResource("Resource_c8qsu"), SubResource("Resource_lcfgm"), SubResource("Resource_mikth"), SubResource("Resource_8bbpn")])
 metadata/_edit_lock_ = true
 
 [node name="SpawnEsquerda" type="Node2D" parent="Mundo/Spawner"]
@@ -195,11 +337,13 @@ hframes = 3
 frame = 2
 metadata/_edit_lock_ = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mundo/Spawner"]
+libraries = {
+&"": SubResource("AnimationLibrary_c77ad")
+}
+
 [node name="Inimigos" type="Node2D" parent="Mundo"]
 metadata/_edit_lock_ = true
-
-[node name="Morcego" parent="Mundo/Inimigos" instance=ExtResource("7_v6mw0")]
-position = Vector2(48, 63)
 
 [node name="SpawnMobilia" parent="Mundo" instance=ExtResource("8_v6mw0")]
 metadata/_edit_lock_ = true
@@ -215,3 +359,4 @@ autoplay = "RESET"
 
 [connection signal="pressed" from="CanvasLayer/PlayAgain" to="." method="jogar_novamente"]
 [connection signal="pressed" from="CanvasLayer/MainMenu" to="." method="menu_principal"]
+[connection signal="restaurar_escudo" from="Mundo/Spawner" to="Mundo/Mago" method="_on_spawner_restaurar_escudo"]

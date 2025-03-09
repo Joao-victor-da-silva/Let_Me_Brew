@@ -145,6 +145,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Gelo/TriggerGelo"]
 shape = SubResource("CircleShape2D_e1l5y")
+disabled = true
 debug_color = Color(0.414479, 0.463523, 1, 0.42)
 metadata/_edit_lock_ = true
 
