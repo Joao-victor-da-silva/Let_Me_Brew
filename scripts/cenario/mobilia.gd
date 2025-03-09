@@ -30,6 +30,8 @@ func controle_magia(id_magia):
 func normal():
 	sprite.modulate = Color8(255,255,255,255)
 	chama.visible = false
+	set_collision_layer_value(8, false)
+	set_collision_mask_value(8, false)
 	set_collision_mask_value(4, false)
 
 func fogo():
@@ -46,6 +48,8 @@ func fogo():
 func gelo():
 	sprite.modulate = Color8(137,255,255,255)
 	chama.visible = false
+	set_collision_layer_value(8, true)
+	set_collision_mask_value(8, true)
 	set_collision_mask_value(4, true)
 	await Utils.timer(5.0)
 	controle_magia(0)

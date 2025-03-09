@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=15 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago/mago.tscn" id="1_k46e6"]
@@ -9,10 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dafsy7q7qk1pc" path="res://prefabs/spawn_mobilia.tscn" id="8_v6mw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
-size = Vector2(576, 80)
+size = Vector2(575, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srya6"]
+size = Vector2(92, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkotw"]
-size = Vector2(48, 208)
+size = Vector2(89, 208)
 
 [sub_resource type="Resource" id="Resource_v6mw0"]
 script = ExtResource("5_srya6")
@@ -144,19 +147,16 @@ collision_mask = 8
 metadata/_edit_lock_ = true
 
 [node name="1" type="CollisionShape2D" parent="Mundo/StaticBody"]
-position = Vector2(240, 248)
+position = Vector2(239.5, 284)
 shape = SubResource("RectangleShape2D_1frua")
-metadata/_edit_lock_ = true
 
 [node name="2" type="CollisionShape2D" parent="Mundo/StaticBody"]
-position = Vector2(-24, 104)
-shape = SubResource("RectangleShape2D_bkotw")
-metadata/_edit_lock_ = true
+position = Vector2(-46, 104)
+shape = SubResource("RectangleShape2D_srya6")
 
 [node name="3" type="CollisionShape2D" parent="Mundo/StaticBody"]
-position = Vector2(504, 104)
+position = Vector2(524.5, 104)
 shape = SubResource("RectangleShape2D_bkotw")
-metadata/_edit_lock_ = true
 
 [node name="Castelo" parent="Mundo" instance=ExtResource("2_32vai")]
 
