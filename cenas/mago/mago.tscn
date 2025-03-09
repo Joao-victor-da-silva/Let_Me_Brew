@@ -116,6 +116,7 @@ script = ExtResource("8_lcyhj")
 
 [node name="Telecinese" type="Node2D" parent="Spells"]
 script = ExtResource("9_e1l5y")
+cooldown = 3.0
 
 [node name="BarraVida" type="TextureProgressBar" parent="."]
 offset_left = -14.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=14 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago/mago.tscn" id="1_k46e6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
 [ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
 [ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="6_dtkcs"]
+[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://prefabs/caixa.tscn" id="7_srya6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
 size = Vector2(576, 80)
@@ -136,6 +137,7 @@ text = "Main Menu"
 
 [node name="Mundo" type="Node2D" parent="."]
 process_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="StaticBody" type="StaticBody2D" parent="Mundo"]
 collision_mask = 8
@@ -195,7 +197,14 @@ metadata/_edit_lock_ = true
 [node name="Inimigos" type="Node2D" parent="Mundo"]
 metadata/_edit_lock_ = true
 
+[node name="Objetos" type="Node2D" parent="Mundo"]
+metadata/_edit_lock_ = true
+
+[node name="Caixa" parent="Mundo/Objetos" instance=ExtResource("7_srya6")]
+position = Vector2(104, 83)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
