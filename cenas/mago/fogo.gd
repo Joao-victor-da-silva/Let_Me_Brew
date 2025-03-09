@@ -17,3 +17,7 @@ func ativar():
 	await Utils.timer(0.1)
 	collision_shape.set_deferred("disabled", true)
 	cooldown()
+
+func _on_trigger_fogo_body_entered(body: Node2D) -> void:
+	body.controle_magia(1)
+	pass 

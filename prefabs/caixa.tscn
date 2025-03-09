@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmj8e80jykku2"]
+[gd_scene load_steps=14 format=3 uid="uid://bmj8e80jykku2"]
 
 [ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="1_g1gtg"]
 [ext_resource type="Script" uid="uid://c3yewl7h787k" path="res://scripts/cenario/mobilia.gd" id="1_joywy"]
@@ -14,14 +14,14 @@ radius = 11.0
 offsets = PackedFloat32Array(0, 0.418006, 1)
 colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvmp6"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rpdxo"]
 gradient = SubResource("Gradient_gglfy")
 
 [sub_resource type="Curve" id="Curve_d6qk3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.68896, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_bvmp6"]
+[sub_resource type="CurveTexture" id="CurveTexture_bt0g1"]
 curve = SubResource("Curve_d6qk3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_clr7c"]
@@ -43,8 +43,33 @@ angular_velocity_max = 200.0
 gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_bvmp6")
-color_ramp = SubResource("GradientTexture1D_bvmp6")
+scale_curve = SubResource("CurveTexture_bt0g1")
+color_ramp = SubResource("GradientTexture1D_rpdxo")
+
+[sub_resource type="Curve" id="Curve_rpdxo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.488479, 0.988764), 0.106008, 0.106008, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rpdxo"]
+curve = SubResource("Curve_rpdxo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rpdxo"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(7, 7, 7)
+angle_min = -169.4
+angle_max = -43.5
+spread = 180.0
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_rpdxo")
+color = Color(0.391033, 0.949549, 1, 1)
+turbulence_noise_strength = 14.33
+turbulence_noise_scale = 2.82
+turbulence_noise_speed_random = 0.27
 
 [node name="Caixa" type="RigidBody2D"]
 collision_layer = 12
@@ -56,6 +81,7 @@ freeze_mode = 1
 script = ExtResource("1_joywy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
 texture_filter = 1
 position = Vector2(0, -3.5)
 texture = ExtResource("1_g1gtg")
@@ -86,5 +112,15 @@ lifetime = 0.75
 randomness = 0.25
 visibility_rect = Rect2(-100, -100, 205.625, 200)
 process_material = SubResource("ParticleProcessMaterial_clr7c")
+
+[node name="gelo" type="GPUParticles2D" parent="."]
+visible = false
+amount = 13
+amount_ratio = 0.5165
+lifetime = 0.78
+trail_lifetime = 0.08
+trail_sections = 4
+trail_section_subdivisions = 6
+process_material = SubResource("ParticleProcessMaterial_rpdxo")
 
 [connection signal="body_entered" from="fogo" to="." method="_on_fogo_body_entered"]

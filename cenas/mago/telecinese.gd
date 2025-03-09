@@ -37,9 +37,12 @@ func agarrar(body):
 	held_body.linear_velocity = Vector2.ZERO
 	held_body.angular_velocity = 0.0
 	held_body.freeze = false
+	if held_body.id_magia != 1:
+		held_body.controle_magia(3)
 
 func soltar():
 	timer_efeito = 0.0
 	held_body.linear_velocity = Vector2.ZERO
+	held_body.controle_magia(0)
 	held_body = null
 	cooldown()
