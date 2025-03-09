@@ -1,19 +1,19 @@
 extends RigidBody2D
 
 @export var id_magia = 0
+
+@onready var collision_shape = $CollisionShape2D
 @onready var sprite = $Sprite2D
 @onready var area_fogo = $fogo/areaMagia
 @onready var chama = $fogo
 @onready var chamas_particulas = $fogo/chama
 
-func _ready() -> void:	
+func _ready() -> void:
 	controle_magia(id_magia)
-	pass
-	
+
 func _process(delta: float) -> void:
 	chamas_particulas.global_rotation = 0
-	pass
-	
+
 func controle_magia(id_magia):
 	match id_magia:
 		0:
@@ -24,13 +24,11 @@ func controle_magia(id_magia):
 			gelo()
 		3: 
 			telecinese()
-	pass 
 
 func normal():
 	sprite.modulate = Color8(255,255,255,255)
 	chama.visible = false
-	set_collision_mask_value(8, false) 
-	pass
+	set_collision_mask_value(8, false)
 
 func fogo():
 	sprite.modulate = Color8(255,56,25,255)
@@ -42,21 +40,36 @@ func fogo():
 	#chamas_particulas.emitting = false
 	#await Utils.timer(0.5)
 	#queue_free()
-	pass
-	
+
 func gelo():
 	sprite.modulate = Color8(137,255,255,255)
 	chama.visible = false
 	set_collision_mask_value(8, true)
-	pass
 
 func telecinese():
 	sprite.modulate = Color8(232,0,248,255)
 	chama.visible = false
 	set_collision_mask_value(8, true)
-	pass
 
 func _on_fogo_body_entered(body: Node2D) -> void:
 	if id_magia == 1:
 		body.controle_magia(id_magia)
-	pass # Replace with function body.
+
+func _enter_tree():
+	Globals.mobilias.append(self)
+
+func _exit_tree():
+	Globals.mobilias.remove_at(Globals.mobilias.find(self))
+
+func is_mouse_over():
+	var mouse = get_global_mouse_position()
+	
+	if collision_shape.shape is RectangleShape2D:
+		var rect = collision_shape.shape.get_rect()
+		rect.position += collision_shape.global_position
+		rect.size += Vector2(4, 4)
+		return rect.has_point(mouse)
+	
+	if collision_shape.shape is CircleShape2D:
+		var distance = collision_shape.global_position.distance_to(mouse) - 2.0
+		return distance <= collision_shape.shape.radius
