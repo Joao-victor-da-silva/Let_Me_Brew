@@ -2,6 +2,7 @@ extends "res://cenas/mago/spell_base.gd"
 
 @onready var colison = $TriggerGelo/CollisionShape2D
 @onready var trigger_gelo = $TriggerGelo
+
 func ativar():
 	colison.set_deferred("disabled", 0)
 	var mouse = get_global_mouse_position()

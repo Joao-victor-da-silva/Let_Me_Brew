@@ -138,6 +138,16 @@ metadata/_edit_lock_ = true
 script = ExtResource("8_lcyhj")
 metadata/_edit_lock_ = true
 
+[node name="TriggerGelo" type="Area2D" parent="Spells/Gelo"]
+collision_layer = 0
+collision_mask = 12
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Gelo/TriggerGelo"]
+shape = SubResource("CircleShape2D_e1l5y")
+debug_color = Color(0.414479, 0.463523, 1, 0.42)
+metadata/_edit_lock_ = true
+
 [node name="Telecinese" type="Node2D" parent="Spells"]
 script = ExtResource("9_e1l5y")
 tempo_cooldown = 3.0
@@ -157,3 +167,4 @@ tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
 [connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Telecinese" to="Spells" method="_on_telecinese_pressed"]
+[connection signal="body_entered" from="Spells/Gelo/TriggerGelo" to="Spells/Gelo" method="_on_area_2d_body_entered"]
