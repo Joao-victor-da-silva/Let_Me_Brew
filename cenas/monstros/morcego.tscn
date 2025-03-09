@@ -1,0 +1,134 @@
+[gd_scene load_steps=19 format=3 uid="uid://c6r0piwlt561k"]
+
+[ext_resource type="PackedScene" uid="uid://dg8xkso3krrth" path="res://cenas/monstros/goblin.tscn" id="1_tk46c"]
+[ext_resource type="Script" uid="uid://20lgkrma4qxa" path="res://cenas/monstros/morcego.gd" id="2_2pmc6"]
+[ext_resource type="Texture2D" uid="uid://bbjysijr1n1r4" path="res://assets/sprites/BatVampire_Sheet.png" id="5_yl83i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv5y5"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl83i"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p252q"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxlha"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akyip"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37p5x"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rhov"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dl2t"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_likqh"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jkj2"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxcc3"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nys2n"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4501u"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuhwr"]
+atlas = ExtResource("5_yl83i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4501u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv5y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl83i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p252q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxlha")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akyip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37p5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rhov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dl2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_likqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jkj2")
+}],
+"loop": false,
+"name": &"ataque",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxcc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nys2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4501u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuhwr")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 12.0
+}]
+
+[node name="Morcego" instance=ExtResource("1_tk46c")]
+script = ExtResource("2_2pmc6")
+
+[node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_4501u")
+frame = 5
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="Hitbox" parent="." index="2"]
+visible = false

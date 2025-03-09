@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4xv1ryc5mhif"]
+[gd_scene load_steps=16 format=3 uid="uid://c4xv1ryc5mhif"]
 
 [ext_resource type="Script" uid="uid://bltim5nr3rmtn" path="res://cenas/jogo.gd" id="1_bkotw"]
 [ext_resource type="PackedScene" uid="uid://c1c5sbup2ejfk" path="res://cenas/mago/mago.tscn" id="1_k46e6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
 [ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
 [ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="6_dtkcs"]
+[ext_resource type="PackedScene" uid="uid://c6r0piwlt561k" path="res://cenas/monstros/morcego.tscn" id="7_v6mw0"]
 [ext_resource type="PackedScene" uid="uid://dafsy7q7qk1pc" path="res://prefabs/spawn_mobilia.tscn" id="8_v6mw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
@@ -197,7 +198,11 @@ metadata/_edit_lock_ = true
 [node name="Inimigos" type="Node2D" parent="Mundo"]
 metadata/_edit_lock_ = true
 
+[node name="Morcego" parent="Mundo/Inimigos" instance=ExtResource("7_v6mw0")]
+position = Vector2(48, 63)
+
 [node name="SpawnMobilia" parent="Mundo" instance=ExtResource("8_v6mw0")]
+metadata/_edit_lock_ = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 metadata/_edit_lock_ = true

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjrq1bo4ki3qs"]
+
+[ext_resource type="Script" uid="uid://dpig27jvd42n2" path="res://cenas/monstros/projetil.gd" id="1_ekpxj"]
+[ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_r11ds"]
+
+[sub_resource type="Gradient" id="Gradient_ekpxj"]
+offsets = PackedFloat32Array(0, 0.418006, 1)
+colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5c1k3"]
+gradient = SubResource("Gradient_ekpxj")
+
+[sub_resource type="Curve" id="Curve_f88qv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.68896, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0fpg7"]
+curve = SubResource("Curve_f88qv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hr4aj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+angle_min = 1.07288e-05
+angle_max = 359.0
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_0fpg7")
+color_ramp = SubResource("GradientTexture1D_5c1k3")
+
+[node name="Projetil" type="Node2D"]
+script = ExtResource("1_ekpxj")
+
+[node name="Fumaca" type="GPUParticles2D" parent="."]
+texture_filter = 1
+amount = 16
+texture = ExtResource("1_r11ds")
+lifetime = 0.75
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_hr4aj")
