@@ -1,15 +1,37 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=31 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
 [ext_resource type="Script" uid="uid://h3e3scwyulh2" path="res://cenas/mago/mago.gd" id="1_h3r2y"]
 [ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
+[ext_resource type="Script" uid="uid://8xwwpf27k8b7" path="res://cenas/mago/hud.gd" id="2_dj8vl"]
+[ext_resource type="Texture2D" uid="uid://dh4x5mi5qing0" path="res://assets/sprites/icone-fogo.png" id="2_r61q6"]
+[ext_resource type="Texture2D" uid="uid://uvowdsjljl53" path="res://assets/sprites/icone-borda2.png" id="3_8ncbm"]
+[ext_resource type="Texture2D" uid="uid://c5til03dxa3s8" path="res://assets/sprites/icone-gelo.png" id="3_ga11a"]
+[ext_resource type="Shader" uid="uid://fb3jifn3u25u" path="res://assets/shaders/cooldown.gdshader" id="3_uwptg"]
+[ext_resource type="Texture2D" uid="uid://dfe0c400v3kfp" path="res://assets/sprites/icone-telecinese.png" id="4_ga11a"]
 [ext_resource type="Shader" uid="uid://cnusdvyaps2wj" path="res://assets/shaders/flash.gdshader" id="4_x4bry"]
 [ext_resource type="Script" uid="uid://2uo58vuuaefi" path="res://cenas/mago/spells.gd" id="6_ci51r"]
 [ext_resource type="Texture2D" uid="uid://yuxc0ssru5oa" path="res://assets/sprites/health_bar.png" id="6_jvh14"]
 [ext_resource type="Script" uid="uid://bdeayxro2fr6c" path="res://cenas/mago/fogo.gd" id="7_247np"]
 [ext_resource type="Script" uid="uid://bup6o3al8kok2" path="res://cenas/mago/gelo.gd" id="8_lcyhj"]
 [ext_resource type="Script" uid="uid://c052h0kp62qop" path="res://cenas/mago/telecinese.gd" id="9_e1l5y"]
+[ext_resource type="Texture2D" uid="uid://b4qvqqkds70qk" path="res://assets/sprites/icone-borda.png" id="12_8ncbm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2krsa"]
+shader = ExtResource("3_uwptg")
+shader_parameter/mask_color = Color(0.376471, 0.376471, 0.376471, 1)
+shader_parameter/threshold = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwptg"]
+shader = ExtResource("3_uwptg")
+shader_parameter/mask_color = Color(0.376471, 0.376471, 0.376471, 1)
+shader_parameter/threshold = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lhe6"]
+shader = ExtResource("3_uwptg")
+shader_parameter/mask_color = Color(0.376471, 0.376471, 0.376471, 1)
+shader_parameter/threshold = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3r2y"]
 shader = ExtResource("1_0b7qp")
@@ -77,6 +99,63 @@ radius = 32.0
 [node name="Mago" type="Node2D" groups=["mago"]]
 script = ExtResource("1_h3r2y")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_dj8vl")
+
+[node name="Buttons" type="Node2D" parent="HUD"]
+metadata/_edit_lock_ = true
+
+[node name="Fogo" type="TextureButton" parent="HUD/Buttons"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2krsa")
+offset_left = 176.0
+offset_top = 224.0
+offset_right = 208.0
+offset_bottom = 256.0
+action_mode = 0
+texture_normal = ExtResource("2_r61q6")
+metadata/_edit_lock_ = true
+
+[node name="Gelo" type="TextureButton" parent="HUD/Buttons"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_uwptg")
+offset_left = 224.0
+offset_top = 224.0
+offset_right = 256.0
+offset_bottom = 256.0
+action_mode = 0
+texture_normal = ExtResource("3_ga11a")
+metadata/_edit_lock_ = true
+
+[node name="Telecinese" type="TextureButton" parent="HUD/Buttons"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_4lhe6")
+offset_left = 272.0
+offset_top = 224.0
+offset_right = 304.0
+offset_bottom = 256.0
+action_mode = 0
+texture_normal = ExtResource("4_ga11a")
+metadata/_edit_lock_ = true
+
+[node name="Bordas" type="Node2D" parent="HUD"]
+metadata/_edit_lock_ = true
+
+[node name="Borda1" type="Sprite2D" parent="HUD/Bordas"]
+texture_filter = 1
+position = Vector2(192, 240)
+texture = ExtResource("3_8ncbm")
+
+[node name="Borda2" type="Sprite2D" parent="HUD/Bordas"]
+texture_filter = 1
+position = Vector2(240, 240)
+texture = ExtResource("12_8ncbm")
+
+[node name="Borda3" type="Sprite2D" parent="HUD/Bordas"]
+texture_filter = 1
+position = Vector2(288, 240)
+texture = ExtResource("12_8ncbm")
+
 [node name="Escudo" type="Sprite2D" parent="."]
 z_index = -1
 texture_filter = 1
@@ -95,8 +174,9 @@ autoplay = "idle"
 frame_progress = 0.981142
 metadata/_edit_lock_ = true
 
-[node name="Spells" type="Node2D" parent="."]
+[node name="Spells" type="Node2D" parent="." node_paths=PackedStringArray("hud")]
 script = ExtResource("6_ci51r")
+hud = NodePath("../HUD")
 metadata/_edit_lock_ = true
 
 [node name="Fogo" type="Node2D" parent="Spells"]
@@ -129,3 +209,7 @@ texture_progress = ExtResource("6_jvh14")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
+[connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
+[connection signal="pressed" from="HUD/Buttons/Telecinese" to="Spells" method="_on_telecinese_pressed"]
