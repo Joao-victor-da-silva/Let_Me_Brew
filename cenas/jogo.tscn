@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://7vjsmcbsq0qo" path="res://cenas/spawner.gd" id="4_dtkcs"]
 [ext_resource type="Script" uid="uid://c0wxbn2khqekr" path="res://assets/resources/monster_wave.gd" id="5_srya6"]
 [ext_resource type="Texture2D" uid="uid://doiwhr1tex2oc" path="res://assets/tilesets/Doors.png" id="6_dtkcs"]
-[ext_resource type="PackedScene" uid="uid://bmj8e80jykku2" path="res://prefabs/caixa.tscn" id="7_srya6"]
+[ext_resource type="PackedScene" uid="uid://dafsy7q7qk1pc" path="res://prefabs/spawn_mobilia.tscn" id="8_v6mw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1frua"]
 size = Vector2(576, 80)
@@ -197,11 +197,7 @@ metadata/_edit_lock_ = true
 [node name="Inimigos" type="Node2D" parent="Mundo"]
 metadata/_edit_lock_ = true
 
-[node name="Objetos" type="Node2D" parent="Mundo"]
-metadata/_edit_lock_ = true
-
-[node name="Caixa" parent="Mundo/Objetos" instance=ExtResource("7_srya6")]
-position = Vector2(104, 83)
+[node name="SpawnMobilia" parent="Mundo" instance=ExtResource("8_v6mw0")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 metadata/_edit_lock_ = true

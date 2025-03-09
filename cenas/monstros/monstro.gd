@@ -21,6 +21,10 @@ func _process(delta):
 	
 	if timer_ataque.is_stopped():
 		sprite.play("andando")
+pass
+
+func controle_magia(id_magia):
+	pass
 
 func _physics_process(delta):
 	if timer_ataque.is_stopped():
