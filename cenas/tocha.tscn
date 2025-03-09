@@ -7,7 +7,7 @@
 offsets = PackedFloat32Array(0, 0.418006, 1)
 colors = PackedColorArray(0.968627, 0.462745, 0.133333, 1, 0.968433, 0.463407, 0.133357, 0.977492, 0.96, 0.49216, 0.1344, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bvmp6"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nf7ks"]
 gradient = SubResource("Gradient_nf7ks")
 
 [sub_resource type="Curve" id="Curve_nf7ks"]
@@ -33,7 +33,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_bvmp6")
-color_ramp = SubResource("GradientTexture1D_bvmp6")
+color_ramp = SubResource("GradientTexture1D_nf7ks")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nf7ks"]
 atlas = ExtResource("1_adts0")

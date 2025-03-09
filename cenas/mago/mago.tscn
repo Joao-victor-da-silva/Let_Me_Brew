@@ -1,24 +1,21 @@
-[gd_scene load_steps=34 format=3 uid="uid://c1c5sbup2ejfk"]
+[gd_scene load_steps=22 format=3 uid="uid://c1c5sbup2ejfk"]
 
 [ext_resource type="Shader" uid="uid://r2dej8e6fvkm" path="res://assets/shaders/barreira.gdshader" id="1_0b7qp"]
 [ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="1_axpp8"]
 [ext_resource type="Script" uid="uid://h3e3scwyulh2" path="res://cenas/mago/mago.gd" id="1_h3r2y"]
-[ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="1_sgq7f"]
 [ext_resource type="Script" uid="uid://8xwwpf27k8b7" path="res://cenas/mago/hud.gd" id="2_dj8vl"]
 [ext_resource type="Texture2D" uid="uid://dh4x5mi5qing0" path="res://assets/sprites/icone-fogo.png" id="2_r61q6"]
 [ext_resource type="Texture2D" uid="uid://uvowdsjljl53" path="res://assets/sprites/icone-borda2.png" id="3_8ncbm"]
 [ext_resource type="Texture2D" uid="uid://c5til03dxa3s8" path="res://assets/sprites/icone-gelo.png" id="3_ga11a"]
 [ext_resource type="Shader" uid="uid://fb3jifn3u25u" path="res://assets/shaders/cooldown.gdshader" id="3_uwptg"]
 [ext_resource type="Texture2D" uid="uid://dfe0c400v3kfp" path="res://assets/sprites/icone-telecinese.png" id="4_ga11a"]
-[ext_resource type="Shader" path="res://assets/shaders/flash.gdshader" id="4_x4bry"]
 [ext_resource type="Script" uid="uid://2uo58vuuaefi" path="res://cenas/mago/spells.gd" id="6_ci51r"]
 [ext_resource type="Texture2D" uid="uid://yuxc0ssru5oa" path="res://assets/sprites/health_bar.png" id="6_jvh14"]
 [ext_resource type="Script" uid="uid://bdeayxro2fr6c" path="res://cenas/mago/fogo.gd" id="7_247np"]
 [ext_resource type="Script" uid="uid://bup6o3al8kok2" path="res://cenas/mago/gelo.gd" id="8_lcyhj"]
 [ext_resource type="Script" uid="uid://c052h0kp62qop" path="res://cenas/mago/telecinese.gd" id="9_e1l5y"]
+[ext_resource type="PackedScene" uid="uid://crvvt31scfbh2" path="res://cenas/mago/mago_sprite.tscn" id="11_dj8vl"]
 [ext_resource type="Texture2D" uid="uid://b4qvqqkds70qk" path="res://assets/sprites/icone-borda.png" id="12_8ncbm"]
-[ext_resource type="Texture2D" uid="uid://be4q2j2whirev" path="res://assets/sprites/caldeirao.png" id="18_2krsa"]
-[ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="19_4lhe6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2krsa"]
 shader = ExtResource("3_uwptg")
@@ -40,65 +37,8 @@ shader = ExtResource("1_0b7qp")
 shader_parameter/shield_color = Color(0, 0.596078, 0.858824, 1)
 shader_parameter/blink_speed = 4.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvh14"]
-shader = ExtResource("4_x4bry")
-shader_parameter/flash_color = Color(0.86, 0.2924, 0.2924, 1)
-shader_parameter/flash_amount = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgq7f"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_axpp8"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0b7qp"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h3r2y"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x4bry"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(192, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvh14"]
-atlas = ExtResource("1_sgq7f")
-region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q64jv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sgq7f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_axpp8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0b7qp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h3r2y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x4bry")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jvh14")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 8.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1l5y"]
 radius = 32.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4lhe6"]
 
 [node name="Mago" type="Node2D" groups=["mago"]]
 script = ExtResource("1_h3r2y")
@@ -171,55 +111,7 @@ scale = Vector2(64, 64)
 texture = ExtResource("1_axpp8")
 metadata/_edit_lock_ = true
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-z_index = -2
-texture_filter = 1
-material = SubResource("ShaderMaterial_jvh14")
-position = Vector2(-8, -25)
-sprite_frames = SubResource("SpriteFrames_q64jv")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.981142
-
-[node name="Decoração" type="Node2D" parent="."]
-z_index = -1
-
-[node name="WoodDecor" type="Sprite2D" parent="Decoração"]
-texture_filter = 1
-position = Vector2(-10, -7)
-texture = ExtResource("19_4lhe6")
-hframes = 7
-vframes = 2
-frame = 2
-
-[node name="WoodDecor4" type="Sprite2D" parent="Decoração"]
-texture_filter = 1
-position = Vector2(0, -7)
-texture = ExtResource("19_4lhe6")
-hframes = 7
-vframes = 2
-frame = 4
-
-[node name="WoodDecor2" type="Sprite2D" parent="Decoração"]
-texture_filter = 1
-position = Vector2(-17, -15)
-texture = ExtResource("19_4lhe6")
-hframes = 7
-vframes = 2
-frame = 2
-
-[node name="WoodDecor3" type="Sprite2D" parent="Decoração"]
-texture_filter = 1
-position = Vector2(-21, -7)
-texture = ExtResource("19_4lhe6")
-hframes = 7
-vframes = 2
-frame = 2
-
-[node name="Caldeirao" type="Sprite2D" parent="Decoração"]
-texture_filter = 1
-position = Vector2(0, -10)
-texture = ExtResource("18_2krsa")
+[node name="Sprites" parent="." instance=ExtResource("11_dj8vl")]
 
 [node name="Spells" type="Node2D" parent="." node_paths=PackedStringArray("hud")]
 script = ExtResource("6_ci51r")
@@ -227,6 +119,7 @@ hud = NodePath("../HUD")
 metadata/_edit_lock_ = true
 
 [node name="Fogo" type="Node2D" parent="Spells"]
+visible = false
 script = ExtResource("7_247np")
 tempo_cooldown = 1.0
 metadata/_edit_lock_ = true
@@ -244,14 +137,6 @@ metadata/_edit_lock_ = true
 [node name="Gelo" type="Node2D" parent="Spells"]
 script = ExtResource("8_lcyhj")
 metadata/_edit_lock_ = true
-
-[node name="TriggerGelo" type="Area2D" parent="Spells/Gelo"]
-collision_layer = 4
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Gelo/TriggerGelo"]
-visible = false
-shape = SubResource("CircleShape2D_4lhe6")
 
 [node name="Telecinese" type="Node2D" parent="Spells"]
 script = ExtResource("9_e1l5y")
@@ -272,4 +157,3 @@ tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
 [connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Telecinese" to="Spells" method="_on_telecinese_pressed"]
-[connection signal="body_entered" from="Spells/Gelo/TriggerGelo" to="Spells/Gelo" method="_on_area_2d_body_entered"]

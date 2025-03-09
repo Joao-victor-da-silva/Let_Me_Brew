@@ -1,0 +1,154 @@
+[gd_scene load_steps=19 format=3 uid="uid://crvvt31scfbh2"]
+
+[ext_resource type="Shader" uid="uid://cnusdvyaps2wj" path="res://assets/shaders/flash.gdshader" id="1_aw22j"]
+[ext_resource type="Texture2D" uid="uid://dpsovyqj7j0g4" path="res://assets/sprites/Mage_idle.png" id="2_qk2yj"]
+[ext_resource type="Texture2D" uid="uid://bv1qams5sj1gs" path="res://assets/tilesets/WoodDecor.png" id="3_dat4w"]
+[ext_resource type="Texture2D" uid="uid://be4q2j2whirev" path="res://assets/sprites/caldeirao.png" id="4_8r05p"]
+[ext_resource type="Texture2D" uid="uid://341mtqdrnyt4" path="res://assets/sprites/quadrado.png" id="5_hgegx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvh14"]
+shader = ExtResource("1_aw22j")
+shader_parameter/flash_color = Color(0.86, 0.2924, 0.2924, 1)
+shader_parameter/flash_amount = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgq7f"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axpp8"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b7qp"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3r2y"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4bry"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvh14"]
+atlas = ExtResource("2_qk2yj")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q64jv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgq7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axpp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3r2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4bry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvh14")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_4lhe6"]
+offsets = PackedFloat32Array(0, 0.418006, 1)
+colors = PackedColorArray(0.388235, 0.780392, 0.301961, 1, 0.39143, 0.78, 0.3042, 1, 0.388235, 0.780392, 0.301961, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7xp8l"]
+gradient = SubResource("Gradient_4lhe6")
+
+[sub_resource type="Curve" id="Curve_egfvb"]
+_data = [Vector2(0, 1), 0.0, -0.204905, 0, 0, Vector2(1, 0), -2.38202, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_64nvi"]
+curve = SubResource("Curve_egfvb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o5qc0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 359.0
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = 100.0
+angular_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.25
+scale_curve = SubResource("CurveTexture_64nvi")
+color_ramp = SubResource("GradientTexture1D_7xp8l")
+
+[node name="MagoSprite" type="Node2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+material = SubResource("ShaderMaterial_jvh14")
+position = Vector2(-8, -25)
+sprite_frames = SubResource("SpriteFrames_q64jv")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.981142
+
+[node name="Decoração" type="Node2D" parent="."]
+z_index = -1
+
+[node name="WoodDecor" type="Sprite2D" parent="Decoração"]
+texture_filter = 1
+position = Vector2(-10, -7)
+texture = ExtResource("3_dat4w")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="WoodDecor4" type="Sprite2D" parent="Decoração"]
+texture_filter = 1
+position = Vector2(0, -7)
+texture = ExtResource("3_dat4w")
+hframes = 7
+vframes = 2
+frame = 4
+
+[node name="WoodDecor2" type="Sprite2D" parent="Decoração"]
+texture_filter = 1
+position = Vector2(-17, -15)
+texture = ExtResource("3_dat4w")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="WoodDecor3" type="Sprite2D" parent="Decoração"]
+texture_filter = 1
+position = Vector2(-21, -7)
+texture = ExtResource("3_dat4w")
+hframes = 7
+vframes = 2
+frame = 2
+
+[node name="Caldeirao" type="Sprite2D" parent="Decoração"]
+texture_filter = 1
+position = Vector2(0, -10)
+texture = ExtResource("4_8r05p")
+
+[node name="Bolhas" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -23)
+amount = 12
+texture = ExtResource("5_hgegx")
+lifetime = 2.0
+randomness = 0.25
+process_material = SubResource("ParticleProcessMaterial_o5qc0")

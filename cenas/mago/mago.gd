@@ -5,7 +5,7 @@ const COR_ESCUDO_NORMAL = Color("0098db")
 const COR_ESCUDO_DANIFICADO = Color("db3535")
 
 @onready var escudo = $Escudo
-@onready var sprite = $Sprite
+@onready var sprite = $Sprites/Sprite
 @onready var barra_vida = $BarraVida
 
 var escudo_ativo : bool = true
