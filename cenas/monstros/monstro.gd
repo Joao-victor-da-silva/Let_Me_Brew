@@ -113,7 +113,7 @@ func tomar_dano(dano):
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("fogo"):
 		queimando()
-		tomar_dano(area.get_parent().dano)
+		#tomar_dano(area.get_parent().dano)
 
 func queimando():
 	fogo_part.visible = true

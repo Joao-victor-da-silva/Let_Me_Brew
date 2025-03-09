@@ -126,7 +126,7 @@ metadata/_edit_lock_ = true
 
 [node name="TriggerFogo" type="Area2D" parent="Spells/Fogo" groups=["fogo"]]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 12
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spells/Fogo/TriggerFogo"]
@@ -168,4 +168,5 @@ tint_progress = Color(0.580392, 0.207843, 0.239216, 1)
 [connection signal="pressed" from="HUD/Buttons/Fogo" to="Spells" method="_on_fogo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Gelo" to="Spells" method="_on_gelo_pressed"]
 [connection signal="pressed" from="HUD/Buttons/Telecinese" to="Spells" method="_on_telecinese_pressed"]
+[connection signal="body_entered" from="Spells/Fogo/TriggerFogo" to="Spells/Fogo" method="_on_trigger_fogo_body_entered"]
 [connection signal="body_entered" from="Spells/Gelo/TriggerGelo" to="Spells/Gelo" method="_on_area_2d_body_entered"]
