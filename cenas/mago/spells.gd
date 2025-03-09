@@ -8,12 +8,6 @@ enum SPELLS { FOGO, GELO, TELECINESE }
 	SPELLS.TELECINESE: $Telecinese
 }
 
-var cooldowns = {
-	SPELLS.FOGO: 0.0,
-	SPELLS.GELO: 0.0,
-	SPELLS.TELECINESE: 0.0
-}
-
 var spell_selecionada : SPELLS = SPELLS.FOGO
 
 func _input(event):
@@ -27,13 +21,8 @@ func _input(event):
 			spell_selecionada = SPELLS.TELECINESE
 
 func _process(delta):
-	# Gerenciar cooldowns
-	for key in cooldowns.keys():
-		cooldowns[key] -= delta
-	
 	# Checar se ativou spell selecionada
 	if Input.is_action_just_pressed("left_click"):
-		if cooldowns[spell_selecionada] < 0.0:
-			var node_spell = spells[spell_selecionada]
-			node_spell.ativar()
-			cooldowns[spell_selecionada] = node_spell.cooldown
+		var spell = spells[spell_selecionada]
+		if spell.pode_ativar():
+			spell.ativar()

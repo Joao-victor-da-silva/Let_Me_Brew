@@ -16,3 +16,4 @@ func ativar():
 	collision_shape.set_deferred("disabled", false)
 	await Utils.timer(0.1)
 	collision_shape.set_deferred("disabled", true)
+	cooldown()

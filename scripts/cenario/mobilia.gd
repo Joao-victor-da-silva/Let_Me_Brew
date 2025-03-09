@@ -28,13 +28,13 @@ func controle_magia(id_magia):
 func normal():
 	sprite.modulate = Color8(255,255,255,255)
 	chama.visible = false
-	set_collision_mask_value(8, false)
+	set_collision_mask_value(4, false)
 
 func fogo():
 	sprite.modulate = Color8(255,56,25,255)
 	area_fogo.visible = true
 	chama.visible = true
-	set_collision_mask_value(8, true)
+	set_collision_mask_value(4, true)
 	#await Utils.timer(5.0)
 	#sprite.visible = false
 	#chamas_particulas.emitting = false
@@ -44,12 +44,12 @@ func fogo():
 func gelo():
 	sprite.modulate = Color8(137,255,255,255)
 	chama.visible = false
-	set_collision_mask_value(8, true)
+	set_collision_mask_value(4, true)
 
 func telecinese():
 	sprite.modulate = Color8(232,0,248,255)
 	chama.visible = false
-	set_collision_mask_value(8, true)
+	set_collision_mask_value(4, true)
 
 func _on_fogo_body_entered(body: Node2D) -> void:
 	if id_magia == 1:
