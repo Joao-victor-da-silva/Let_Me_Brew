@@ -170,15 +170,19 @@ texture = ExtResource("1_axpp8")
 metadata/_edit_lock_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = -2
 texture_filter = 1
 material = SubResource("ShaderMaterial_jvh14")
-position = Vector2(-10, -25)
+position = Vector2(-8, -25)
 sprite_frames = SubResource("SpriteFrames_q64jv")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.981142
 
-[node name="WoodDecor" type="Sprite2D" parent="."]
+[node name="Decoração" type="Node2D" parent="."]
+z_index = -1
+
+[node name="WoodDecor" type="Sprite2D" parent="Decoração"]
 texture_filter = 1
 position = Vector2(-10, -7)
 texture = ExtResource("19_4lhe6")
@@ -186,7 +190,7 @@ hframes = 7
 vframes = 2
 frame = 2
 
-[node name="WoodDecor4" type="Sprite2D" parent="."]
+[node name="WoodDecor4" type="Sprite2D" parent="Decoração"]
 texture_filter = 1
 position = Vector2(0, -7)
 texture = ExtResource("19_4lhe6")
@@ -194,7 +198,7 @@ hframes = 7
 vframes = 2
 frame = 4
 
-[node name="WoodDecor2" type="Sprite2D" parent="."]
+[node name="WoodDecor2" type="Sprite2D" parent="Decoração"]
 texture_filter = 1
 position = Vector2(-17, -15)
 texture = ExtResource("19_4lhe6")
@@ -202,7 +206,7 @@ hframes = 7
 vframes = 2
 frame = 2
 
-[node name="WoodDecor3" type="Sprite2D" parent="."]
+[node name="WoodDecor3" type="Sprite2D" parent="Decoração"]
 texture_filter = 1
 position = Vector2(-21, -7)
 texture = ExtResource("19_4lhe6")
@@ -210,7 +214,7 @@ hframes = 7
 vframes = 2
 frame = 2
 
-[node name="Caldeirao" type="Sprite2D" parent="."]
+[node name="Caldeirao" type="Sprite2D" parent="Decoração"]
 texture_filter = 1
 position = Vector2(0, -10)
 texture = ExtResource("18_2krsa")
