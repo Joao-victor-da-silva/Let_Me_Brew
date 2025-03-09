@@ -6,13 +6,13 @@
 script = ExtResource("1_w3ihu")
 
 [node name="spawn_mobilia01" type="Node2D" parent="."]
-position = Vector2(55, 234)
+position = Vector2(55, 195)
 
 [node name="spawn_mobilia02" type="Node2D" parent="."]
-position = Vector2(152, 234)
+position = Vector2(152, 195)
 
 [node name="spawn_mobilia03" type="Node2D" parent="."]
-position = Vector2(319, 233)
+position = Vector2(319, 194)
 
 [node name="spawn_mobilia04" type="Node2D" parent="."]
-position = Vector2(400, 234)
+position = Vector2(400, 195)
