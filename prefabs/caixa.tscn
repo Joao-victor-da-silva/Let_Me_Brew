@@ -76,7 +76,7 @@ collision_mask = 24
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_bt0g1")
 
-[node name="fogo" type="GPUParticles2D" parent="fogo"]
+[node name="chama" type="GPUParticles2D" parent="fogo"]
 texture_filter = 1
 position = Vector2(0, 3)
 amount = 15
